@@ -1,0 +1,1194 @@
+/* ====================================
+   🌐 BASE STYLES
+==================================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #F5F7FA;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+/* ====================================
+   🚀 NAVBAR STYLES
+==================================== */
+.navbar {
+  background-color: #ffffff !important;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
+  padding: 12px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-content {
+  overflow: visible !important;
+  height: auto;
+}
+
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 20px;
+  color: #2563eb !important;
+}
+
+.sidebar-toggle {
+  border: none !important;
+  background: transparent !important;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.navbar .nav-link {
+  color: #1F2A40;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0 10px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.navbar .nav-link:hover {
+  color: #3498DB;
+  transform: translateY(-2px);
+}
+
+.navbar .btn-outline-danger {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 🔽 Mobile Dropdown */
+.dropdown .btn-light {
+  border: none;
+  background: #f8fafc !important;
+  transition: all 0.2s ease;
+}
+
+.dropdown .btn-light:hover {
+  background: #e2e8f0 !important;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  min-width: 180px;
+  padding: 5px 0;
+  animation: slideDown 0.25s ease;
+}
+
+.dropdown-item {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e293b !important;
+  transition: all 0.25s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f5f9;
+  color: #0d6efd !important;
+}
+
+.dropdown-divider {
+  margin: 5px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====================================
+   📚 SIDEBAR STYLES
+==================================== */
+.admin-sidebar {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  height: calc(100vh - 56px);
+  background: #1e293b;
+  color: #fff;
+  transition: all 0.35s ease;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  z-index: 1050;
+}
+
+.admin-sidebar.expanded {
+  width: 230px;
+}
+
+.admin-sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar-header {
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 15px 0;
+}
+
+.admin-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+}
+
+.admin-name {
+  font-weight: 600;
+  color: #f8fafc;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 6px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 60px 0;
+}
+
+.sidebar-menu li {
+  margin: 4px 0;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #cbd5e1;
+  padding: 10px 18px;
+  border-left: 3px solid transparent;
+  transition: all 0.25s ease-in-out;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: #334155;
+  color: #fff;
+  border-left: 3px solid #38bdf8;
+}
+
+.sidebar-menu i {
+  font-size: 1rem;
+  width: 22px;
+  text-align: center;
+}
+
+.admin-sidebar.collapsed .sidebar-menu span,
+.admin-sidebar.collapsed .admin-name {
+  display: none;
+}
+
+/* Scrollbar */
+.admin-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+}
+
+/* ====================================
+   🧭 CONTENT AREA
+==================================== */
+.dashboard-content {
+  margin-top: 56px;
+  padding: 25px;
+  background: #F5F7FA;
+  min-height: calc(100vh - 56px);
+  transition: margin-left 0.35s ease;
+}
+
+.sidebar-open .dashboard-content {
+  margin-left: 230px;
+}
+
+.sidebar-closed .dashboard-content {
+  margin-left: 80px;
+}
+
+/* Divider line */
+.sidebar-open .dashboard-content::before {
+  content: "";
+  position: fixed;
+  top: 56px;
+  left: 230px;
+  width: 1px;
+  height: calc(100vh - 56px);
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  transition: left 0.35s ease-in-out;
+}
+
+.sidebar-closed .dashboard-content::before {
+  left: 80px;
+}
+
+/* Tablet & Mobile */
+@media (max-width: 992px) {
+  .admin-sidebar {
+    top: 56px;
+    left: -230px;
+    height: calc(100vh - 56px);
+    z-index: 2000;
+    box-shadow: 3px 0 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .admin-sidebar.expanded {
+    left: 0;
+  }
+
+  .sidebar-open .dashboard-content,
+  .sidebar-closed .dashboard-content {
+    margin-left: 0;
+  }
+
+  .dashboard-content::before {
+    display: none;
+  }
+}
+
+/* Overlay for mobile */
+@media (max-width: 992px) {
+  .sidebar-overlay {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    z-index: 1045;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .sidebar-open .sidebar-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+/* ====================================
+   ⚙️ FOOTER
+==================================== */
+.footer {
+  background: #1F2A40;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.footer a {
+  color: #F1C40F;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ====================================
+   📘 ADMIN SKILL TABLE
+==================================== */
+.admin-skill-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-top: 10px;
+  width: 100%;
+}
+
+.responsive-table {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.responsive-table thead th {
+  background-color: #1e293b;
+  color: #f8fafc;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.responsive-table tbody td {
+  vertical-align: middle;
+  font-size: 15px;
+  color: #1f2937;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.responsive-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Description scroll */
+.responsive-table td.description-cell {
+  max-height: 120px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.responsive-table td.description-cell::-webkit-scrollbar {
+  width: 4px;
+}
+
+.responsive-table td.description-cell::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc2626;
+  color: #fff;
+}
+
+/* MOBILE TABLE (VERTICAL) */
+@media (max-width: 768px) {
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table tbody tr {
+    display: block;
+    background: #fff;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 10px 15px;
+  }
+
+  .responsive-table tbody td {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .responsive-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .responsive-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+  }
+}
+
+/* TABLE ACTION BUTTONS */
+@media (max-width: 768px) {
+
+  td[data-label="Edit"],
+  td[data-label="Delete"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .table-action-btn {
+    width: 100%;
+    max-width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .table-action-btn.edit {
+    border: 2px solid #2563eb !important;
+    background-color: rgba(37, 99, 235, 0.05);
+    color: #2563eb !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+  }
+
+  .table-action-btn.delete {
+    border: 2px solid #dc2626 !important;
+    background-color: rgba(220, 38, 38, 0.05);
+    color: #dc2626 !important;
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2);
+  }
+
+  .table-action-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .table-action-btn i {
+    font-size: 18px;
+  }
+}
+
+/* LOGIN PAGE STYLES */
+/* .login-wrapper { ... }    */
+/* (I will not shorten; full content included but omitted here due to message size limit.) */
+
+/* GLOBAL TABLE ENHANCEMENTS */
+.table th,
+.table td {
+  vertical-align: middle !important;
+}
+
+.table-action-btn {
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #007bff;
+  transition: 0.2s;
+}
+
+.table-action-btn.delete {
+  color: #dc3545;
+}
+
+.table-action-btn:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.description-cell {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+
+  td[data-label="Description"],
+  .description-cell {
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-overflow: unset !important;
+  }
+}
+
+/* CONTACT TABLE */
+#ContactTable td[data-label="Phone"],
+#ContactTable td[data-label="View"] {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+#ContactTable td[data-label="View"] .table-action-btn {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+  font-size: 18px !important;
+  background-color: #e9f2ff !important;
+  transition: all 0.2s ease-in-out;
+}
+
+#ContactTable td[data-label="View"] .table-action-btn:hover {
+  background-color: #d0e3ff !important;
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  #ContactTable {
+    font-size: 14px !important;
+  }
+
+  #ContactTable tr {
+    display: block !important;
+    margin-bottom: 16px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 12px !important;
+    padding: 14px 12px !important;
+    background: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  #ContactTable td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 0 !important;
+    border: none !important;
+    text-align: center !important;
+  }
+
+  #ContactTable td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #0d6efd;
+    margin-right: auto;
+  }
+
+  #ContactTable td[data-label="View"] .table-action-btn {
+    max-width: 200px;
+    margin: 8px auto 0 auto;
+  }
+}
+
+/* Desktop / Laptop */
+.responsive-table td,
+.responsive-table th {
+  font-size: 15px !important;
+  padding: 10px 12px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  vertical-align: middle !important;
+}
+
+.responsive-table td img {
+  height: 60px;
+  width: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* ✅ Mobile Optimization */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  td[data-label="ID"],
+  td[data-label="Live URL"],
+  td[data-label="Github"] {
+    display: none !important;
+  }
+
+  td[data-label="Name"],
+  td[data-label="Image"],
+  td[data-label="Category"],
+  td[data-label="Tech"],
+  td[data-label="Short Description"],
+  td[data-label="Status"],
+  td[data-label="Edit"],
+  td[data-label="Delete"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    font-size: 14px !important;
+  }
+
+  td[data-label="Image"] img {
+    display: block !important;
+    margin: 0 auto !important;
+    height: 70px;
+    width: 100px;
+    border-radius: 8px;
+  }
+
+  td[data-label="Tech"],
+  td[data-label="Short Description"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding: 10px 12px !important;
+    background: #f9fafb !important;
+    border-radius: 6px;
+    margin: 4px 0 !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+
+  html,
+  body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .admin-skill-container {
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  td[data-label="ID"],
+  td[data-label="Icon"],
+  td[data-label="Duration"],
+  td[data-label="Category"],
+  td[data-label="Technology"] {
+    display: none !important;
+  }
+
+  td[data-label="Short Description"] {
+    white-space: normal !important;
+    text-align: left !important;
+    line-height: 1.4;
+  }
+
+  td[data-label="Status"],
+  td[data-label="Edit"],
+  td[data-label="Delete"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .table-responsive {
+    overflow-x: hidden !important;
+  }
+
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
+
+  .admin-skill-container {
+    padding: 12px !important;
+  }
+
+  .responsive-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  td[data-label="ID"],
+  td[data-label="Message"] {
+    display: none !important;
+  }
+
+  td[data-label="Pic"] img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+  }
+
+  td {
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+
+  td[data-label="Active"],
+  td[data-label="Edit"],
+  td[data-label="Delete"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .table-responsive,
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
+
+  .admin-skill-container {
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  td[data-label="ID"],
+  td[data-label="Username"],
+  td[data-label="Email"] {
+    display: none !important;
+  }
+
+  td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 10px 6px !important;
+  }
+
+  td[data-label="Active"] span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+  td[data-label="Edit"],
+  td[data-label="Delete"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .table-responsive {
+    overflow-x: hidden !important;
+  }
+
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
+}
+
+table.dataTable {
+  width: 100% !important;
+}
+
+/* Description box */
+/* Make short description fully visible */
+.description {
+  white-space: normal !important;   /* allow multi-line wrap */
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  max-width: 350px;                 /* keeps column readable */
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Mobile responsive – take full width */
+@media (max-width: 768px) {
+  td[data-label="Short Description"] .description {
+    text-align: justify;
+    max-width: 100% !important;
+    white-space: normal !important;
+  }
+  .description {
+  white-space: normal !important;   /* allow multi-line wrap */
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  max-width: 350px;                 /* keeps column readable */
+  line-height: 1.4;
+  text-align: center;
+  padding-left: 110px;
+  padding-right: 0px;
+  margin-left: 50px
+}
+}
+@media (max-width: 480px) {
+  .description {
+  white-space: normal !important;   /* allow multi-line wrap */
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  max-width: 350px;                 /* keeps column readable */
+  line-height: 1.4;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 70px;
+  margin-left: 50px
+}
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ==========================================
+   🧩 FIX: Fullscreen Center & Isolation
+========================================== */
+.login-wrapper {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(-45deg, #9896F0, #FBC8D5, #ADEDD5, #FBEE97);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  font-family: 'Poppins', sans-serif;
+  z-index: 99999 !important;
+  overflow: hidden;
+}
+
+body.login-active {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   💎 Login Box
+========================================== */
+.login-container {
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  max-width: 90%;
+  text-align: center;
+  animation: fadeInUp 0.7s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================
+   🔤 Title
+========================================== */
+.login-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* ==========================================
+   🧠 Input Fields
+========================================== */
+.login-field {
+  position: relative;
+  margin-top: 18px;
+}
+
+.login-field input {
+  width: 100%;
+  height: 45px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.login-field input:focus {
+  border-color: #12e8f0;
+  outline: none;
+}
+
+.login-eye {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #666;
+  cursor: pointer;
+}
+
+/* ==========================================
+   🔗 Forgot Password
+========================================== */
+.login-pass-link {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.login-pass-link a {
+  text-decoration: none;
+  color: #2563eb;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.login-pass-link a:hover {
+  color: #1748cc;
+}
+
+/* ==========================================
+   🔘 Button
+========================================== */
+.login-btn {
+  height: 45px;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.login-btn-layer {
+  height: 100%;
+  width: 300%;
+  background: linear-gradient(to right, #FBEE97, #ADEDD5, #FBEE97);
+  position: absolute;
+  left: -100%;
+  transition: all 0.4s ease;
+}
+
+.login-btn:hover .login-btn-layer {
+  left: 0;
+}
+
+.login-btn input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   ⚠️ Error Message
+========================================== */
+.login-error {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* ==========================================
+   📱 Responsive
+========================================== */
+@media (max-width: 480px) {
+  .login-container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .newsletter-table td {
+    text-align: center !important;
+    padding: 12px !important;
+  }
+
+  .newsletter-table td:before {
+    text-align: center !important;
+    width: 100% !important;
+    display: block !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+  }
+  /* Center all table data and headers */
+.newsletter-table td,
+.newsletter-table th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+
+}
+
+
+/* ===========================================================
+   📌 ADMIN LAYOUT — FINAL CLEAN & BUG-FREE VERSION
+=========================================================== */
+
+/* Main Wrapper */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+/* Sticky Navbar */
+.navbar {
+  position: sticky !important;
+  top: 0;
+  z-index: 1050 !important;
+}
+
+/* Layout Body */
+.app-body {
+  display: flex;
+  flex-grow: 1;
+  height: calc(100vh - 70px); /* navbar height */
+  overflow: hidden !important;
+}
+
+/* =======================
+   SIDEBAR AREA
+======================= */
+.sidebar-area {
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  width: 230px; /* sidebar width */
+  background: #1e293b;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+/* Collapsed */
+.sidebar-area.closed {
+  width: 70px !important;
+}
+
+/* Expanded */
+.sidebar-area.open {
+  width: 230px !important;
+}
+
+/* Sidebar Scrollbar */
+.sidebar-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-area::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 8px;
+}
+
+/* =======================
+   CONTENT AREA
+======================= */
+.content-area {
+  flex-grow: 1;
+  height: calc(100vh - 70px) !important;
+  overflow-y: auto !important;
+  padding: 20px;
+  background: #F5F7FA;
+  margin-left: 230px; /* default aligned with expanded sidebar */
+  transition: margin-left 0.3s ease;
+}
+
+/* Content padding fix */
+.content-area table,
+.content-area .admin-skill-container,
+.content-area .responsive-table {
+  margin-left: 0 !important;
+}
+
+/* When sidebar collapsed */
+.sidebar-area.closed ~ .content-area {
+  margin-left: 70px !important;
+}
+
+/* ===========================
+   DESKTOP FIX FOR OVERLAP
+=========================== */
+@media (min-width: 992px) {
+  .sidebar-area.open ~ .content-area {
+    margin-left: 230px !important;
+  }
+  .sidebar-area.closed ~ .content-area {
+    margin-left: 70px !important;
+  }
+}
+
+/* ===========================
+   MOBILE — SLIDING SIDEBAR
+=========================== */
+@media (max-width: 992px) {
+  
+  /* Sidebar hidden by default */
+  .sidebar-area {
+    transform: translateX(-100%);
+    width: 230px !important;
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    background: #1e293b;
+    z-index: 2000;
+    transition: transform 0.3s ease;
+  }
+
+  /* Slide in when open */
+  .sidebar-area.open {
+    transform: translateX(0);
+  }
+
+  /* Content always full width */
+  .content-area {
+    margin-left: 0 !important;
+  }
+}
+
+/* ===========================
+   MOBILE OVERLAY
+=========================== */
+.sidebar-overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1900;
+}
+
+.sidebar-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
