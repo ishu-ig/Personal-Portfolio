@@ -47,7 +47,8 @@ export default function Blog() {
                 </div>
 
                 <p
-                    className="section-description text-light mb-4"
+                    className="section-description mb-4"
+                    style={{ color: "var(--text-color)" }}
                     data-aos="fade-up"
                     data-aos-delay={200}
                 >

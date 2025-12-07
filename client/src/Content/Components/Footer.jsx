@@ -60,8 +60,8 @@ export default function Footer() {
           <div className="row align-items-center">
             {/* Left Section */}
             <div className="col-md-6 mb-3 mb-md-0 text-center text-md-start">
-              <h4 className="text-light fw-bold mb-2">Join Our Newsletter</h4>
-              <p className="text-light mb-0">{message}</p>
+              <h4 className="fw-bold mb-2" style={{ color: "var(--text-color)" }}>Join Our Newsletter</h4>
+              <p className="mb-0" style={{ color: "var(--text-color)" }}>{message}</p>
             </div>
 
             {/* Right Section */}
@@ -128,7 +128,7 @@ export default function Footer() {
           </div>
 
           {/* Credits */}
-          <p className="credits text-light">
+          <p className="credits" style={{ color: "var(--text-color)" }}>
             Designed & Developed by{" "}
             <span className="fw-bold">Ishaan Gupta</span>
           </p>
