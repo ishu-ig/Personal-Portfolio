@@ -14,6 +14,7 @@ const whitelist = [
   "http://localhost:8000",
   "https://devishaan.me",
   "https://www.devishaan.me",
+  "http://www.devishaan.me",
   "https://admin.devishaan.me",
   "https://api.devishaan.me"   // 🔥 VERY IMPORTANT
 ];
