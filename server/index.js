@@ -37,8 +37,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Handle preflight OPTIONS request
-app.options("*", cors(corsOptions));
 
 app.use(express.json());
 app.use("/public", express.static("public"));
