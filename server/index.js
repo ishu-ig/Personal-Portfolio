@@ -8,15 +8,14 @@ const app = express();
 const Router = require("./routes/index");
 
 const whitelist = [
-  "http://localhost:3000",
-  "http://localhost:4000",
-  "http://localhost:5000",
-  "http://localhost:8000",
+  "http://devishaan.me",
   "https://devishaan.me",
-  "https://www.devishaan.me",
   "http://www.devishaan.me",
-  "https://admin.devishaan.me",
-  "https://api.devishaan.me"   // 🔥 VERY IMPORTANT
+  "https://www.devishaan.me",
+  "http://localhost:3000",
+  "https://localhost:3000",
+  "http://api.devishaan.me",
+  "https://api.devishaan.me"
 ];
 
 const corsOptions = {
