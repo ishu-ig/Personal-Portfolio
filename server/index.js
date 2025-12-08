@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
-require("dotenv").config();              // ✅ Load env first
-require("./db_connect");                // ✅ Connect to DB
+require("dotenv").config();
+require("./db_connect");
 
 const app = express();
 const Router = require("./routes/index");
 
+// Allowed Origins
 const whitelist = [
   "http://devishaan.me",
   "https://devishaan.me",
@@ -18,28 +18,31 @@ const whitelist = [
   "https://api.devishaan.me"
 ];
 
+// CORS Options
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || whitelist.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('CORS Error: Not authorized'));
-        }
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, preflight, etc.)
+    if (!origin) return callback(null, true);
+
+    if (whitelist.includes(origin)) {
+      return callback(null, true);
     }
+
+    console.log("❌ Blocked Origin:", origin);
+    return callback(new Error("CORS Error: Not authorized"));
+  },
+  methods: "GET,POST,PUT,PATCH,DELETE",
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
+
+// Handle preflight OPTIONS request
+app.options("*", cors(corsOptions));
+
 app.use(express.json());
 app.use("/public", express.static("public"));
 app.use("/api", Router);
 
-// Serve React frontend
-// app.use("", express.static(path.join(__dirname, "client/build")));
-// app.get("/*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
-
 const port = process.env.PORT || 8000;
-app.listen(port, () => {
-    console.log(`🚀 Server running at http://localhost:${port}`);
-});
+app.listen(port, () => console.log(`🚀 Server running at ${port}`));
