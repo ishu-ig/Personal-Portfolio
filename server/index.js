@@ -7,7 +7,17 @@ require("./db_connect");                // ✅ Connect to DB
 const app = express();
 const Router = require("./routes/index");
 
-const whitelist = ['http://localhost:4000', 'http://localhost:3000', 'http://localhost:8000', 'http://localhost:5000', "https://devishaan.me", "https://www.devishaan.me", "https://admin.devishaan.me"];
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:4000",
+  "http://localhost:5000",
+  "http://localhost:8000",
+  "https://devishaan.me",
+  "https://www.devishaan.me",
+  "https://admin.devishaan.me",
+  "https://api.devishaan.me"   // 🔥 VERY IMPORTANT
+];
+
 const corsOptions = {
     origin: function (origin, callback) {
         if (!origin || whitelist.includes(origin)) {
